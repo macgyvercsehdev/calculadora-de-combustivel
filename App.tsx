@@ -15,25 +15,12 @@ const App = () => {
   const [consumo, setConsumo] = useState('');
   const [custoTotal, setCustoTotal] = useState<number | null>(null);
 
-  const formatarMoeda = (valor: number | null) => {
-    if (valor === null) return 'R$ 0,00';
-
-    const valorFormatado = valor.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 2,
-    });
-
-    return valorFormatado;
-  };
 
   const calcularCusto = () => {
-    // Substituir vírgulas por pontos para garantir que o parseFloat funcione corretamente
     const precoLimpo = precoCombustivel.trim().replace(',', '.');
     const distanciaLimpa = distancia.trim().replace(',', '.');
     const consumoLimpo = consumo.trim().replace(',', '.');
 
-    // Converter para float
     const preco = parseFloat(precoLimpo);
     const dist = parseFloat(distanciaLimpa);
     const cons = parseFloat(consumoLimpo);
